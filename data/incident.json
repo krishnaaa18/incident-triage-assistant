@@ -1,0 +1,138 @@
+[
+    {
+      "incident_id": "INC-001",
+      "service": "auth-service",
+      "error_type": "TimeoutException",
+      "severity": "High",
+      "log_summary": "Login request timed out while calling user-service",
+      "root_cause": "User-service experienced high latency due to database lock",
+      "resolution": "Optimized DB query and added timeout retry logic"
+    },
+    {
+      "incident_id": "INC-002",
+      "service": "payment-service",
+      "error_type": "NullPointerException",
+      "severity": "Critical",
+      "log_summary": "Null reference error during payment validation",
+      "root_cause": "Missing null check on payment gateway response",
+      "resolution": "Added validation checks before processing payment"
+    },
+    {
+      "incident_id": "INC-003",
+      "service": "order-service",
+      "error_type": "ServiceUnavailable",
+      "severity": "High",
+      "log_summary": "Order creation failed due to inventory-service unavailability",
+      "root_cause": "Inventory-service crashed after faulty deployment",
+      "resolution": "Rolled back deployment and restarted service"
+    },
+    {
+      "incident_id": "INC-004",
+      "service": "api-gateway",
+      "error_type": "RateLimitExceeded",
+      "severity": "Medium",
+      "log_summary": "Multiple requests rejected due to rate limit policy",
+      "root_cause": "Improper rate limiting configuration after scaling",
+      "resolution": "Adjusted rate limit thresholds"
+    },
+    {
+      "incident_id": "INC-005",
+      "service": "notification-service",
+      "error_type": "SMTPConnectionError",
+      "severity": "Medium",
+      "log_summary": "Failed to connect to SMTP server while sending email",
+      "root_cause": "SMTP server credentials expired",
+      "resolution": "Updated credentials and rotated keys"
+    },
+    {
+      "incident_id": "INC-006",
+      "service": "billing-service",
+      "error_type": "DatabaseConnectionError",
+      "severity": "Critical",
+      "log_summary": "Billing transactions failed due to DB connection pool exhaustion",
+      "root_cause": "Connection leak in billing worker threads",
+      "resolution": "Fixed connection leak and increased pool size"
+    },
+    {
+      "incident_id": "INC-007",
+      "service": "user-service",
+      "error_type": "DataIntegrityViolation",
+      "severity": "High",
+      "log_summary": "User update failed due to foreign key constraint violation",
+      "root_cause": "Orphaned reference in relational mapping",
+      "resolution": "Corrected database schema and added validation"
+    },
+    {
+      "incident_id": "INC-008",
+      "service": "inventory-service",
+      "error_type": "CacheMissError",
+      "severity": "Low",
+      "log_summary": "High latency observed due to frequent cache misses",
+      "root_cause": "Redis cache eviction policy misconfigured",
+      "resolution": "Updated cache eviction strategy"
+    },
+    {
+      "incident_id": "INC-009",
+      "service": "config-service",
+      "error_type": "ConfigurationLoadError",
+      "severity": "Medium",
+      "log_summary": "Service failed to load environment configuration",
+      "root_cause": "Missing environment variable in production config",
+      "resolution": "Added missing configuration and redeployed"
+    },
+    {
+      "incident_id": "INC-010",
+      "service": "payment-service",
+      "error_type": "GatewayTimeout",
+      "severity": "High",
+      "log_summary": "Payment gateway API timed out after 30 seconds",
+      "root_cause": "External payment provider latency spike",
+      "resolution": "Implemented exponential backoff retry logic"
+    },
+    {
+      "incident_id": "INC-011",
+      "service": "api-gateway",
+      "error_type": "AuthenticationFailure",
+      "severity": "Medium",
+      "log_summary": "JWT validation failed for multiple incoming requests",
+      "root_cause": "Expired signing key used by auth-service",
+      "resolution": "Rotated signing key and updated validation config"
+    },
+    {
+      "incident_id": "INC-012",
+      "service": "order-service",
+      "error_type": "DeadlockDetected",
+      "severity": "High",
+      "log_summary": "Database deadlock detected during order placement",
+      "root_cause": "Concurrent transaction conflict in order table",
+      "resolution": "Refactored transaction isolation logic"
+    },
+    {
+      "incident_id": "INC-013",
+      "service": "auth-service",
+      "error_type": "MemoryLeak",
+      "severity": "Critical",
+      "log_summary": "Auth-service pod restarted due to memory exhaustion",
+      "root_cause": "Unreleased session objects in authentication handler",
+      "resolution": "Fixed object lifecycle management"
+    },
+    {
+      "incident_id": "INC-014",
+      "service": "notification-service",
+      "error_type": "QueueBacklog",
+      "severity": "Medium",
+      "log_summary": "Message queue backlog caused delayed notifications",
+      "root_cause": "Consumer scaling not aligned with traffic spike",
+      "resolution": "Increased consumer instances"
+    },
+    {
+      "incident_id": "INC-015",
+      "service": "cache-service",
+      "error_type": "ConnectionRefused",
+      "severity": "High",
+      "log_summary": "Application failed to connect to Redis cache",
+      "root_cause": "Redis instance not running after maintenance",
+      "resolution": "Restarted Redis service and added health checks"
+    }
+  ]
+  
