@@ -1,16 +1,19 @@
 from core.retriever import IncidentRetriever
+from core.reasoner import IncidentReasoner
 
 retriever = IncidentRetriever()
+reasoner = IncidentReasoner()
 
 query = "Payment request failed due to timeout from external gateway"
 
-results = retriever.find_similar(query)
+similar = retriever.find_similar(query)
 
-print("\nTop Similar Incidents:\n")
+print("\nSimilar Incidents Retrieved:\n")
+for r in similar:
+    print(f"{r['incident_id']} - {r['error_type']}")
 
-for r in results:
-    print(f"ID: {r['incident_id']}")
-    print(f"Service: {r['service']}")
-    print(f"Error: {r['error_type']}")
-    print(f"Root Cause: {r['root_cause']}")
-    print("-" * 40)
+print("\nAI Generated Root Cause Analysis:\n")
+
+result = reasoner.generate_response(query, similar)
+
+print(result)
