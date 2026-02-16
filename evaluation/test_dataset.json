@@ -1,0 +1,13 @@
+[
+    {
+      "query": "auth-service timeout while validating JWT token",
+      "expected_category": "authentication",
+      "expected_severity": "High"
+    },
+    {
+      "query": "payment-service failing due to database connection pool exhaustion",
+      "expected_category": "database",
+      "expected_severity": "Critical"
+    }
+  ]
+  

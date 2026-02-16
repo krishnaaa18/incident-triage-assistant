@@ -1,32 +1,58 @@
-AI Incident Triage & Root Cause Assistant (SaaS-Oriented)
+AI Incident Triage & Root Cause Assistant
+
+Production-style AI backend for automated incident triage in microservices-based SaaS platforms.
+
 Overview
 
-This project implements a deployable AI-powered incident triage system designed for microservices-based SaaS platforms.
+This system analyzes production incident descriptions, retrieves semantically similar historical failures using FAISS vector search, and performs structured root cause reasoning using a locally deployed LLM (Mistral via Ollama).
 
-The system analyzes production error logs, retrieves similar historical incidents using vector similarity search, and generates probable root cause analysis along with recommended debugging steps.
+It returns:
 
-Unlike traditional chatbot-based RAG systems, this solution focuses on structured incident intelligence and API-first architecture suitable for SaaS environments.
+Incident category
 
-Problem Statement
+Probable root cause
 
-In microservices architectures:
+Recommended remediation steps
 
-Logs are massive and noisy.
+Hybrid confidence score
 
-Root cause analysis is manual and time-consuming.
+Processing latency
 
-Similar incidents repeat across services.
+Designed as an API-first backend suitable for SaaS DevOps tooling.
 
-Debugging knowledge is not centralized.
+Key Capabilities
+Retrieval-Augmented Reasoning
 
-This system acts as an intelligent triage engine that:
+Uses SentenceTransformer embeddings (all-MiniLM-L6-v2) with FAISS L2 index to retrieve top-k similar historical incidents.
 
-Parses incident logs
+Local LLM Inference
 
-Retrieves similar past incidents
+Integrates Mistral via Ollama for structured JSON reasoning without external API dependency.
 
-Suggests probable root causes
+Hybrid Confidence Scoring
 
-Recommends remediation steps
+Combines:
 
-Returns structured JSON output
+LLM self-reported confidence
+
+Retrieval similarity normalization
+
+Improves reliability compared to pure LLM reasoning.
+
+Automated Severity Prediction
+
+Majority-vote severity estimation from historical retrieval results.
+
+Production-Oriented Features
+
+FastAPI REST deployment
+
+Structured JSON validation (Pydantic)
+
+Health check endpoint
+
+Latency tracking
+
+Structured logging
+
+Evaluation framework
